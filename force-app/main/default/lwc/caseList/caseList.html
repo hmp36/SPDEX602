@@ -1,0 +1,18 @@
+<template>
+    <template if:true={casesToDisplay}>
+        <template for:each={cases} for:item="cas">
+            <div key={cas.fields.Id.value}>
+                <c-case-card
+                    case-number={cas.fields.CaseNumber.value}
+                    subject={cas.fields.Subject.value}
+                    status={cas.fields.Status.value}
+                    priority={cas.fields.Priority.value}
+                    case-id={cas.fields.Id.value}
+                ></c-case-card>
+            </div>
+        </template>
+    </template>
+    <template if:false={casesToDisplay}>
+        <p>No related Case records to display....</p>
+    </template>
+</template>

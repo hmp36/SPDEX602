@@ -1,0 +1,16 @@
+<template>
+    <lightning-modal-header label={headerLabel}></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-record-form
+            record-id={recordId}
+            object-api-name={objectApiName}
+            mode={formMode}
+            layout-type={layoutType}
+            oncancel={handleCancel}
+            onsuccess={handleSuccess}
+        ></lightning-record-form>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <p>This information is the sole property of GenWatt, Inc.</p>
+    </lightning-modal-footer>
+</template>

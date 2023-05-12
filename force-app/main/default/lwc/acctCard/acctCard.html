@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <h1 slot="title" title={name}><a onclick={handleSelect}>{ranking}{name}</a></h1>
+        <div class="slds-tile">
+            <div class="slds-tile__detail slds-m-left_medium">
+                <dl class="slds-list_horizontal slds-wrap">
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Annual Revenue">Annual Revenue:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={annualRevenue}>
+                        <lightning-formatted-number value={annualRevenue} format-style="currency"></lightning-formatted-number>
+                    </dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Phone">Phone:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={phone}>
+                        <lightning-formatted-phone value={phone}></lightning-formatted-phone>
+                    </dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Contacts">
+                        <lightning-input type="checkbox" label="Show Contacts?" value={showContacts} 
+                            onchange={displayContacts}></lightning-input>
+                    </dt>
+                </dl>
+            </div>
+        </div>
+        <template if:true={showContacts}>
+            <template for:each={contacts} for:item="con">
+                <div key={con.Id} class="slds-m-left_large">
+                    <ul class="slds-list_horizontal slds-has-dividers_right">
+                        <li class="slds-item">
+                            <lightning-icon icon-name="standard:contact" size="xx-small"></lightning-icon>
+                        </li>
+                        <li class="slds-item">{con.Name}</li>
+                        <li class="slds-item">{con.Title}</li>
+                        <li class="slds-item">
+                            <lightning-formatted-email value={con.Email}></lightning-formatted-email>
+                        </li>
+                    </ul>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
+

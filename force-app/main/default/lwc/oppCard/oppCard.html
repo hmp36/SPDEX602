@@ -1,0 +1,22 @@
+
+<template>
+    <lightning-card icon-name="standard:opportunity">
+        <h1 title={name} slot="title"><a>{name}</a></h1>
+        <div class="slds-tile">    
+            <div class="slds-tile__detail">
+                <dl class="slds-list_horizontal slds-wrap">
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Stage">Stage:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={stage}>{stage}</dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Amount">Amount:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={amount}>
+                        <lightning-formatted-number value={amount} format-style="currency"></lightning-formatted-number>
+                    </dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Close Date">Close Date:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={closeDate}>
+                        <lightning-formatted-date-time value={closeDate}></lightning-formatted-date-time>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </lightning-card>
+</template>

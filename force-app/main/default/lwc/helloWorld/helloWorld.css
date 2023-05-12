@@ -1,0 +1,7 @@
+.myClass {
+    font-family: 'Times News Roman', Times, serif;
+    background-color: lightblue;
+    border-color: yellow;
+    border-width: 5px;
+    border-style: solid;
+}

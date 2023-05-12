@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Account List" icon-name="standard:account">
+        <template for:each={records} for:item="acct" for:index="idx">
+            <div key={acct.Id}>
+                <c-acct-card name={acct.Name} annual-revenue={acct.AnnualRevenue} phone={acct.Phone}
+                    acct-id={acct.Id} rank={idx} onselected={handleSelection}></c-acct-card>
+            </div>
+        </template>
+    </lightning-card>
+</template>
+

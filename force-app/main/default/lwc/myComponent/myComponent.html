@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="My Component">
+        <div class="slds-m-left_small">
+            <lightning-button title="Show Contacts" label="Contacts" onclick={toggleView}></lightning-button>
+            <template if:true={showContacts}>
+                <template for:each={contacts} for:item="con" for:index="idx">
+                    <div key={con.Id}>
+                        <p>{idx}. Name: {con.Name} | Title: {con.Title}</p>
+                        <c-hello-world first-name={con.Name}></c-hello-world>
+                    </div>
+                </template>
+            </template>
+            <template if:false={showContacts}>
+                <p>NOT showing those contacts....</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
+
+ 

@@ -1,0 +1,53 @@
+
+<template>
+    <div class="slds-grid">
+        <div class="slds-col">
+            <lightning-combobox label="Stage Filter" placeholder="Select the stage to filter on..." options={comboOptions}
+                        value={status} onchange={handleChange} variant="label-hidden"></lightning-combobox>
+        </div>
+        <div class="slds-col">
+            <lightning-button-menu label="Toggle View" onselect={handleToggle} class="slds-float_right">
+                <lightning-menu-item label="Card" value="card" checked={cardChecked}></lightning-menu-item>
+                <lightning-menu-item label="Table" value="table" checked={tableChecked}></lightning-menu-item>
+            </lightning-button-menu>
+        </div>
+    </div>
+    <div class="slds-tile slds-m-bottom_small slds-m-top_small">
+        <div class="slds-tile__detail">
+            <dl class="slds-list_horizontal slds-wrap">
+                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Total Records">Total Records:</dt>
+                <dd class="slds-item_detail slds-truncate" title={totalRecords}>{totalRecords}</dd>
+                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Total Amount">Total Amount:</dt>
+                <dd class="slds-item_detail slds-truncate" title={totalAmount}>
+                    <lightning-formatted-number value={totalAmount} format-style="currency"></lightning-formatted-number>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <template if:true={recordsToDisplay}>
+        <template if:true={tableMode}>
+            <div class="slds-border_top slds-border_bottom slds-border_right slds-border_left">
+                <lightning-datatable
+                    data={displayedOpps}
+                    key-field="Id"
+                    columns={columns}
+                    hide-checkbox-column
+                    draft-values={myDrafts}
+                    onsave={handleTableSave}
+                ></lightning-datatable>
+            </div>
+        </template>
+        <template if:false={tableMode}>
+            <template for:each={displayedOpps} for:item="opp">
+                <div key={opp.Id}>
+                    <c-opp-card name={opp.Name} stage={opp.StageName} close-date={opp.CloseDate} amount={opp.Amount}
+                        opp-id={opp.Id} onmodsaved={refreshWire}>
+                    </c-opp-card>
+                </div>
+            </template>
+        </template>
+    </template>
+    <template if:false={recordsToDisplay}>
+        <p>No related opportunities to display....</p>
+    </template>
+</template>

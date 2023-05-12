@@ -1,0 +1,17 @@
+<template>
+    <lightning-card icon-name="standard:case">
+        <h1 slot="title" title={caseNumber}><a onclick={handleSelect}>{caseNumber}</a></h1>
+        <div class="slds-tile">
+            <div class="slds-tile__detail slds-m-left_medium">
+                <dl class="slds-list_horizontal slds-wrap">
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Subject">Subject:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={subject}>{subject}</dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Status">Status:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={status}>{status}</dd>
+                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Priority">Priority:</dt>
+                    <dd class="slds-item_detail slds-truncate" title={priority}>{priority}</dd>
+                </dl>
+            </div>
+        </div>
+    </lightning-card>
+</template>
